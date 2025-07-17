@@ -66,4 +66,21 @@ contract DecentraJobs {
 
         emit JobCancelled(jobId);
     }
+
+    function getJobDetails(uint256 jobId) public view returns (
+        address client,
+        string memory description,
+        uint256 reward,
+        JobStatus status,
+        address freelancer
+    ) {
+        Job storage job = jobs[jobId];
+        return (
+            job.client,
+            job.description,
+            job.reward,
+            job.status,
+            job.freelancer
+        );
+    }
 }
